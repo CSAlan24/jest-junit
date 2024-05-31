@@ -97,9 +97,9 @@ const generateTestCase = function(junitOptions, suiteOptions, tc, filepath, file
   // Write out a <skipped> tag if test is skipped
   // Nested underneath <testcase> tag
   if (tc.status === 'pending') {
-    testCase.testcase.push({
-      skipped: {}
-    });
+    // testCase.testcase.push({
+    //   skipped: {}
+    // });
   }
 
   if (getGetCaseProperties !== null) {
@@ -226,7 +226,7 @@ module.exports = function (report, appDirectory, options, rootDir = null) {
           name: replaceVars(suiteOptions.suiteNameTemplate, suiteNameVariables),
           errors: suiteErrors,
           failures: suite.numFailingTests,
-          skipped: suite.numPendingTests,
+          skipped: 0,
           timestamp: (new Date(suite.perfStats.start)).toISOString().slice(0, -5),
           time: suiteExecutionTime,
           tests: suiteNumTests
